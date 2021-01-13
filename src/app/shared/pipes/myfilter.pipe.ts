@@ -7,7 +7,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class MyfilterPipe implements PipeTransform {
 
   transform(workers, searchStr: string): any[] {
-    if (workers.lenght === 0 || searchStr === '') {
+    if (workers.length === 0 || searchStr === '') {
       return workers;
     }
     else {

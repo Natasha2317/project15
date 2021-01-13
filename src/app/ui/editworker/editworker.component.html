@@ -1,0 +1,25 @@
+<div id="popup" class="popup">
+  <div class="popup__body">
+    <div class="popup__content">
+      <div (click)="closePopup()" class="popup__close">x</div>
+        <form [formGroup]="personForm" (ngSubmit)="onEditWorker()" class="col-12">
+          <label for="name">Имя:</label><br>
+          <input id="name" type="text" formControlName="firstname">
+          <span class="ml-3 badge badge-danger" *ngIf="personForm.controls['firstname'].invalid && personForm.controls['firstname'].touched">Имя не указано<br></span><br>
+          <label for="surname">Фамилия:</label><br>
+          <input class="mb-3" type="text" id="surname" formControlName="lastname">
+          <span class="ml-3 badge badge-danger" *ngIf="personForm.controls['lastname'].invalid && personForm.controls['lastname'].touched">Фамилия не указана<br></span><br>
+          <input class="mb-3" type="text" id="phone" [textMask]="{mask: mask}" formControlName="userphone">
+          <span class="ml-3 badge badge-danger" *ngIf="personForm.controls['userphone'].invalid && personForm.controls['userphone'].touched">Телефон не указан<br></span><br>
+          <select class="mt-3 mb-3" formControlName="usertype">
+            <option [ngValue]="myWorkerType.programmer">Программист</option>
+            <option [ngValue]="myWorkerType.designer">Дизайнер</option>
+            <option [ngValue]="myWorkerType.copywriter">Рекламщик</option>
+            <option [ngValue]="myWorkerType.manager">Менеджер</option>
+          </select>
+          <br>
+          <button class="btn btn-outline-primary btn-sm" [disabled]="personForm.invalid">Сохранить</button>
+        </form>
+      </div>
+    </div>
+  </div>

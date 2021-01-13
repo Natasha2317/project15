@@ -1,0 +1,29 @@
+
+  <div class="row" *ngIf="workers.length > 0">
+    <div class="col-12">
+      <h5>{{ title }}</h5>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col" [style.width]="'15%'">#</th>
+            <th scope="col" [style.width]="'15%'">Имя</th>
+            <th scope="col">Фамилия</th>
+            <th scope="col">Телефон</th>
+            <th scope="col" [style.width]="'15%'"></th>
+            <th scope="col" [style.width]="'15%'"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let worker of workers | myfilter : searchStr">
+            <th scope="row">{{ worker.id }}</th>
+            <td>{{ worker.name }}</td>
+            <td>{{ worker.surname }}</td>
+            <td>{{ worker.phone }}</td>
+            <td><button (click) = "onEditWorker(worker.id)" class="btn btn-outline-primary btn-sm">Изменить</button></td>
+            <td><button (click) = "onDeleteWorker(worker.id)" class="btn btn-outline-danger btn-sm">Удалить</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+

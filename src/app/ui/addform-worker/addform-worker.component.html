@@ -1,0 +1,31 @@
+
+<div class="row mb-3">
+    <div class="col-12">
+      <h5>Добавить сотрудника</h5>
+    </div>
+    <form [formGroup]="personForm" (ngSubmit)="onAddWorker()" class="col-12">
+    <div class="col-4">
+      <input type="text" class="form-control" placeholder="Имя" formControlName="firstname" />
+    </div>
+    <span class="ml-3 badge badge-danger" *ngIf="personForm.controls['firstname'].invalid && personForm.controls['firstname'].touched">Имя не указано<br></span><br>
+    <div class="col-4">
+      <input type="text" class="form-control" placeholder="Фамилия" formControlName="lastname" />
+    </div>
+    <span class="ml-3 badge badge-danger" *ngIf="personForm.controls['lastname'].invalid && personForm.controls['lastname'].touched">Фамилия не указана<br></span><br>
+    <div class="col-4">
+      <input type="text" [textMask]="{mask: mask}" placeholder="Номер телефона" class="form-control" formControlName="userphone" />
+    </div>
+    <span class="ml-3 badge badge-danger" *ngIf="personForm.controls['userphone'].invalid && personForm.controls['userphone'].touched">Телефон не указан<br></span><br>
+    <div class="col-4">
+      <select class="custom-select" formControlName="usertype">
+        <option [ngValue]="myWorkerType.programmer">Программист</option>
+        <option [ngValue]="myWorkerType.designer">Дизайнер</option>
+        <option [ngValue]="myWorkerType.copywriter">Рекламщик</option>
+        <option [ngValue]="myWorkerType.manager">Менеджер</option>
+      </select>
+    </div>
+    <div class="col-12 mt-1">
+      <button class="btn btn-outline-primary btn-sm" [disabled]="personForm.invalid">Добавить</button>
+    </div>
+    </form>
+</div>
